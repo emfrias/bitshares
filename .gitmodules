@@ -12,7 +12,7 @@
     ignore = dirty
 [submodule "programs/qt_wallet"]
 	path = programs/qt_wallet
-	url = https://github.com/BitShares/qt_wallet.git
+	url = https://github.com/emfrias/qt_wallet.git
     ignore = dirty
 [submodule "libraries/leveldb"]
 	path = libraries/leveldb
