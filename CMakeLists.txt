@@ -2,6 +2,21 @@
 project( BitShares )
 cmake_minimum_required( VERSION 2.8.12 )
 
+set(BLOCKCHAIN_NAME "BitShares" CACHE STRING "Name of the blockchain, used to name the binaries (BitShares, DevShares, BitSharesTestNet)")
+
+if(BLOCKCHAIN_NAME STREQUAL BitShares)
+  set(CLI_CLIENT_EXECUTABLE_NAME bitshares_client)
+  set(GUI_CLIENT_EXECUTABLE_NAME BitShares)
+elseif(BLOCKCHAIN_NAME STREQUAL DevShares)
+  set(CLI_CLIENT_EXECUTABLE_NAME devshares_client)
+  set(GUI_CLIENT_EXECUTABLE_NAME DevShares)
+elseif(BLOCKCHAIN_NAME STREQUAL BitSharesTestNet)
+  set(CLI_CLIENT_EXECUTABLE_NAME bitsharestestnet_client)
+  set(GUI_CLIENT_EXECUTABLE_NAME BitSharesTestNet)
+else()
+  message(FATAL_ERROR "Expected BLOCKCHAIN_NAME to be set to BitShares, DevShares, or BitSharesTestNet")
+endif()
+
 # http://stackoverflow.com/a/18369825
 if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
     if (CMAKE_CXX_COMPILER_VERSION VERSION_LESS 4.8)
